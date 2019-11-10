@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="au theme template">
+        <meta name="author" content="Hau Nguyen">
+        <meta name="keywords" content="au theme template">
+        <meta charset="${_response_encoding}">
+        <link rel="stylesheet" media="screen" href="@{'/public/cssBootstrap/bootstrap.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+
+        <!-- Fontfaces CSS-->
+        <link href="@{'/public/css/font-face.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/font-awesome-4.7/css/font-awesome.min.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/font-awesome-5/css/fontawesome-all.min.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/mdi-font/css/material-design-iconic-font.min.css'}" rel="stylesheet" media="all">
+
+        <!-- Bootstrap CSS-->
+        <link href="@{'/public/vendor/bootstrap-4.1/bootstrap.min.css'}" rel="stylesheet" media="all">
+
+        <!-- Vendor CSS-->
+        <link href="@{'/public/vendor/animsition/animsition.min.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/wow/animate.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/css-hamburgers/hamburgers.min.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/slick/slick.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/select2/select2.min.css'}" rel="stylesheet" media="all">
+        <link href="@{'/public/vendor/perfect-scrollbar/perfect-scrollbar.css'}" rel="stylesheet" media="all">
+
+        <!-- Main CSS-->
+        <link href="@{'/public/css/theme.css'}" rel="stylesheet" media="all">
+
+    </head>
+    <style type="text/css">
+		.branco {
+  			bgcolor: gray;
+		}
+		</style>
+    <body>
+    	
+    	#{if flash.success}
+    		${flash.success.raw()}
+    	#{/if}
+        #{doLayout /}
+        
+        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
+
+        <!-- Jquery JS-->
+        <script src="@{'/public/vendor/jquery-3.2.1.min.js'}"></script>
+        <!-- Bootstrap JS-->
+        <script src="@{'/public/vendor/bootstrap-4.1/popper.min.js'}"></script>
+        <script src="@{'/public/vendor/bootstrap-4.1/bootstrap.min.js'}"></script>
+        <!-- Vendor JS       -->
+        <script src="@{'/public/vendor/slick/slick.min.js'}">
+        </script>
+        <script src="@{'/public/vendor/wow/wow.min.js'}"></script>
+        <script src="@{'/public/vendor/animsition/animsition.min.js'}"></script>
+        <script src="@{'/public/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js'}">
+        </script>
+        <script src="@{'/public/vendor/counter-up/jquery.waypoints.min.js'}"></script>
+        <script src="@{'/public/vendor/counter-up/jquery.counterup.min.js'}">
+        </script>
+        <script src="@{'/public/vendor/circle-progress/circle-progress.min.js'}"></script>
+        <script src="@{'/public/vendor/perfect-scrollbar/perfect-scrollbar.js'}"></script>
+        <script src="@{'/public/vendor/chartjs/Chart.bundle.min.js'}"></script>
+        <script src="@{'/public/vendor/select2/select2.min.js'}">
+        </script>
+
+        <!-- Main JS-->
+        <script src="@{'/public/js/main.js'}"></script>
+    
+    	<script type="text/javascript">
+
+function previewImagem(){
+	var imagem = document.querySelector("input[name='user.foto']").files[0];
+	var preview = document.querySelector('img[name=prev]');
+	
+	var reader = new FileReader();
+	
+	reader.onloadend = function () {
+		preview.src = reader.result;
+	}
+	
+	if(imagem){
+		reader.readAsDataURL(imagem);
+	}else{
+		preview.src = "";
+	}
+}
+
+/*function PreviewImage() { 
+    var oFReader = new FileReader(); 
+    oFReader.readAsDataURL(document.getElementById("foto").files[0]);
+
+    oFReader.onload = function (oFREvent) { 
+        document.getElementById("prev").src = oFREvent.target.result; 
+    }; 
+};*/
+</script>
+    </body>
+</html>

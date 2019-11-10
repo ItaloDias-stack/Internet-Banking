@@ -1,0 +1,30 @@
+    #{extends 'main.html' /}
+    #{set title:'Home' /}
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                        	<h1>Realizar Pagamento</h1>
+                            <hr class="line-seprate">
+                        </div>
+                        <p class="bg-danger">#{if flash.error} ${flash.error.raw()} #{/if}</p>
+                        <div class="login-form">
+                            <form action="@{Depositos.pagar}" method="post">
+                                <input type="hidden" value="${(flash['pagar.conta.id'])? flash['pagar.conta.id']: conta?.id}" name="pagar.conta.id">
+                                <div class="form-group">
+                                    <label>Valor do Pagamento</label>
+                                    <input class="au-input au-input--full" type="number" name="pagar.valorDoPagamento">
+                                    <p class="bg-danger"> #{error 'pagar.valorDoPagamento' /}</p>
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Pagar</button>
+                            </form>
+                            <a class="btn btn-secondary au-btn--block" style="text-align: center;" href="@{Contas.inicio(conta.id)}">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

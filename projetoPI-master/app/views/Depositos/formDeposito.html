@@ -1,0 +1,30 @@
+    #{extends 'main.html' /}
+    #{set title:'Home' /}
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                        	<h1>Realizar Depósito</h1>
+                            <hr class="line-seprate">
+                        </div>
+                        <p class="bg-danger">#{if flash.error} ${flash.error.raw()} #{/if}</p>
+                        <div class="login-form">
+                            <form action="@{Depositos.depositar}" method="post">
+                                <input type="hidden" value="${(flash['deposito.conta.id'])? flash['deposito.conta.id']: conta?.id}" name="deposito.conta.id">
+                                <div class="form-group">
+                                    <label>Valor do Depósito</label>
+                                    <input class="au-input au-input--full" type="number" name="deposito.saldo"">
+                                    <p class="bg-danger"> #{error 'deposito.saldo' /}</p>
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Depositar</button>
+                            </form>
+                            <a class="btn btn-secondary au-btn--block" style="text-align: center;" href="@{Contas.inicio(conta.id)}">Voltar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

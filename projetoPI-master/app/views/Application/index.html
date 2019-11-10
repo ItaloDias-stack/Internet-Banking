@@ -1,0 +1,37 @@
+    #{extends 'main.html' /}
+    #{set title:'Home' /}
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <img src="public/images/icon/logoBanco.png" alt="GROUPBANK">
+                            <hr class="line-seprate">
+                        </div>
+                        #{if flash.error}<p class="bg-danger"> ${flash.error.raw()}</p> #{/if}
+                        <div class="login-form">
+                            <form action="@{Application.login}" method="post">
+                                <div class="form-group">
+                                    <label>Nome de usuário</label>
+                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Usuário">
+                                </div>
+                                <div class="form-group">
+                                    <label>Senha</label>
+                                    <input class="au-input au-input--full" type="password" name="senha" placeholder="Senha">
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Entrar</button>
+                            </form>
+                            <div class="register-link">
+                                <p>
+                                    Não possui uma conta?
+                                    <a href="@{Application.cadastroC}">Registre-se aqui.</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

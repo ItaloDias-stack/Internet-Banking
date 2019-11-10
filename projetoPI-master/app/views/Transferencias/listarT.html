@@ -1,0 +1,64 @@
+    #{extends 'main.html' /}
+    #{set title:'Home' /}
+    <div class="jumbotron">
+            <div class="container">
+                    <div class="login-content">
+                        <div class="login-logo">
+                        	<h1>Lista de Transferencias</h1>
+                            <hr class="line-seprate">
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <div class="jumbotron">
+                                <label>Buscar faixa de tempo especifica</label>
+                                #{if flash.error}<p class="bg-danger">${flash.error.raw()}</p>#{/if}
+                                <form action="@{Transferencias.buscarT}" method="post">
+                                    <div class="input-group">
+                                        <input type="date" name="data" class="form-control"> <input
+                                            type="hidden" value="${conta?.id}" name="id"
+                                            class="form-control">
+                                        <div class="input-group-btn">
+                                            <button style="margin-left: 10px;" type="submit"
+                                                class="btn btn-secondary">Buscar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row justify-content-md-center">
+                            <div class="branco">
+                                <table class="table table-light">
+                                    <thead>
+                                        <tr class="table-primary">
+                                            <th colspan="8"><center>Lista de Transferencias</center></th>
+                                        </tr>
+                                        <tr class="table-secondary">
+                                            <th>Data de Transferencia</th>
+                                            <th>Valor</th>
+                                            <th>Conta</th>
+                                            <th>Agencia</th>
+                                            <th>Operacao</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        #{list items: transferencias, as: 'transferencias'} #{if
+                                        transferencias.conta.id == conta.id}
+                                        <tr>
+                                            <td>${transferencias.dataTransferencia}</td>
+                                            <td>${transferencias.valor}</td>
+                                            <td>${transferencias.numC}</td>
+                                            <td>${transferencias.ag}</td>
+                                            <td>${transferencias.op}</td>
+                                        </tr>
+                                        #{/if} #{/list}
+                                    </tbody>
+                                </table>
+                                <br> <a class="btn btn-secondary"
+                                    href="@{Transferencias.transferencia(conta.id)}">Realizar
+                                    Transferencia</a> <a class="btn btn-secondary"
+                                    href="@{Contas.inicio(conta.id)}">Voltar</a> <br>
+
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    </div>
